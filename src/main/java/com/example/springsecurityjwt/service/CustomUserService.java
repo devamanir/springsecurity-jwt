@@ -16,8 +16,11 @@ import java.util.ArrayList;
 //create your custom user service and implements the method from the UserDetailsService
 @Service
 public class CustomUserService implements UserDetailsService {
-    @Autowired
+
     private UserRepository userRepository;
+    CustomUserService(UserRepository userRepository){
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -19,11 +19,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 //web security config file would extend web securityConfigurer Adapter and override some needed methods
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+
     private CustomUserService customUserService;
+    private JwtFilter jwtFilter;
+
+    SecurityConfig(CustomUserService customUserService){
+        this.customUserService =  customUserService;
+    }
 
     @Autowired
- private JwtFilter jwtFilter;
+    SecurityConfig(CustomUserService customUserService,JwtFilter jwtFilter )
+    {
+        this.customUserService =  customUserService;
+        this.jwtFilter = jwtFilter;
+    }
+
+
 //first method below that we override
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

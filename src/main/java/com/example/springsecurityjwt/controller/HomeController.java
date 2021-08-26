@@ -13,11 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HomeController {
-    @Autowired
+
     private JwtUtil jwtUtil;
-    @Autowired
     private AuthenticationManager authenticationManager;
 
+    HomeController (JwtUtil jwtUti) {
+        this.jwtUtil = jwtUtil;
+    }
+    @Autowired
+    HomeController (JwtUtil jwtUti, AuthenticationManager authenticationManager) {
+        this.jwtUtil = jwtUtil;
+        this.authenticationManager = authenticationManager;
+    }
     @GetMapping("/")
     public String welcome() {
         return "Welcome to the new world";

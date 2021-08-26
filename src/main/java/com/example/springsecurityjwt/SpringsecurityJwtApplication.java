@@ -15,8 +15,11 @@ import java.util.stream.Stream;
 @SpringBootApplication
 public class SpringsecurityJwtApplication {
 
-@Autowired
+
 private UserRepository repository;
+    SpringsecurityJwtApplication(UserRepository repository){
+        this.repository = repository;
+    }
 
     @PostConstruct
     public void initUsers(){
