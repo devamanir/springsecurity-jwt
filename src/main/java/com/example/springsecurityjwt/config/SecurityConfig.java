@@ -23,19 +23,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private CustomUserService customUserService;
     private JwtFilter jwtFilter;
 
-    SecurityConfig(CustomUserService customUserService){
-        this.customUserService =  customUserService;
+    SecurityConfig(CustomUserService customUserService) {
+        this.customUserService = customUserService;
     }
 
     @Autowired
-    SecurityConfig(CustomUserService customUserService,JwtFilter jwtFilter )
-    {
-        this.customUserService =  customUserService;
+    SecurityConfig(CustomUserService customUserService, JwtFilter jwtFilter) {
+        this.customUserService = customUserService;
         this.jwtFilter = jwtFilter;
     }
 
 
-//first method below that we override
+    //first method below that we override
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserService);
@@ -51,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 

@@ -2,7 +2,6 @@ package com.example.springsecurityjwt.filter;
 
 import com.example.springsecurityjwt.service.CustomUserService;
 import com.example.springsecurityjwt.util.JwtUtil;
-import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,12 +22,12 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
     private CustomUserService customUserService;
 
-    JwtFilter(JwtUtil jwtUtil){
+    JwtFilter(JwtUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
     }
 
     @Autowired
-    JwtFilter(JwtUtil jwtUtil,CustomUserService customUserService){
+    JwtFilter(JwtUtil jwtUtil, CustomUserService customUserService) {
         this.jwtUtil = jwtUtil;
         this.customUserService = customUserService;
     }
