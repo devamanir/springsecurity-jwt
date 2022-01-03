@@ -23,10 +23,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private CustomUserService customUserService;
     private JwtFilter jwtFilter;
 
-    SecurityConfig(CustomUserService customUserService) {
-        this.customUserService = customUserService;
-    }
-
     @Autowired
     SecurityConfig(CustomUserService customUserService, JwtFilter jwtFilter) {
         this.customUserService = customUserService;
